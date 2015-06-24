@@ -39,9 +39,9 @@ class Neo {
     {
         return $this->client->getNode($id);
     }
-    public function add_node($node,$property,$value)
+    public function add_node($property,$value)
     {
-    	$node = $this->client->makeNode()->setProperty($property, $value)->save();
+    	return $this->client->makeNode()->setProperty($property, $value)->save();
     }
     public function remove_node($id)
     {
@@ -200,7 +200,7 @@ class Neo {
             echo $e->getMessage();
         }
     }
-    public function insert_with_index($modelName,$data)
+    public function insert_with_index($modelName,$property,$value)
     {
         try
         {
@@ -214,6 +214,7 @@ class Neo {
             $node->addLabels(array($label));
             /* adding node to index */
             $nodeIndex->add($node, $property, $node->getProperty($property));
+            return $node->getId();
         }
         catch(Exception $e)
         {
