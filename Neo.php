@@ -1,4 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
+/*******************************************************************************
+*              Author: Asfand yar Ahmed                                        *
+*              Email: asfandahmed1@gmail.com                                   *
+*              Dated: 24/6/2015                                                *
+********************************************************************************/
+
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 use Everyman\Neo4j\Client,
 	Everyman\Neo4j\Index\NodeIndex,
 	Everyman\Neo4j\Relationship,
