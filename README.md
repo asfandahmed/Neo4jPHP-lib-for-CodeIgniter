@@ -2,8 +2,7 @@
 
 ### Instructions
 
-1. Copy neo.php file to **application/libraries** folder in your project directory.
-2. Create a folder "lib" in **application/libraries** folder and copy your Neo4jPHP folder in the **lib** folder.
+1. Copy the repository files to **application/libraries** folder in your project directory.
 
 ### Usage 
 * call neo4j library like this: `$this->load->library('neo');`
