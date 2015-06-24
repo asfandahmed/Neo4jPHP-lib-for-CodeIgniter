@@ -21,20 +21,11 @@ spl_autoload_register(function ($sClass) {
 class Neo {
 
 	protected $client;
-    private $local=true;
 	public function __construct()
 	{
-        if($this->local){
-            $this->client = new Client();
-            $this->client->getTransport()
-            ->setAuth('neo4j', 'bookrack');    
-        }else{
-            $this->client = new Client('bookrack.sb02.stations.graphenedb.com', 24789);
-            $this->client->getTransport()
-            ->setAuth('bookrack', 'sgd991UcxP2tVd3zzOkc');
-        }
-		
-        
+        $this->client = new Client();
+        $this->client->getTransport()
+        ->setAuth('user', 'password');    
 	}
     public function add_index($name)
     {	
@@ -172,26 +163,6 @@ class Neo {
                     ->setReturnFilter(Traversal::ReturnAll)
                     ->setMaxDepth($depth);
         return $nodes = $traversal->getResults($startNode, Traversal::ReturnTypeNode);
-    }
-    public function create_book($property,$value)
-    {
-        try
-        {
-            /* creating node index */
-            $books = new NodeIndex($this->client,'Book');
-           /* creating label*/
-            $label = $this->client->makeLabel('Book');
-            /* creating node */
-            $node = $this->client->makeNode()->setProperty($property,$value)->save();
-            /* labeling node */
-            $node->addLabels(array($label));
-            /* adding node to index */
-            $books->add($node, $property, $node->getProperty($property));
-        }
-        catch(Exception $e)
-        {
-            echo $e->getMessage();
-        }
     }
     public function insert($modelName,$data)
     {
