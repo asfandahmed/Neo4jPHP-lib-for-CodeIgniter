@@ -16,3 +16,5 @@
 ### Execute cypher
 `$cypher = "match(n) return n limit 25";`  
 `$this->neo->execute_query($cypher);`
+
+###Read [Wiki](https://github.com/asfandahmed/Neo4jPHP-lib-for-CodeIgniter/wiki) for class reference 
